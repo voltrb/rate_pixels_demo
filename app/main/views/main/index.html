@@ -1,0 +1,73 @@
+<:Title>
+  Home
+
+<:Body>
+  <div class='hero'>
+    <div class='hero-text center'>
+      <div class='row'>
+        <div class='col m12 l6 offset-l3'>
+          <h1>Discover the best photography of the week.</h1>
+          <h6>The contest ends {{ TimeTasks.end_of_contest.time_distance_in_words }}.</h6>
+          <br /><br />
+          <a href='/popular' class='btn btn-large cyan'>Explore</a>
+          &nbsp;
+          <a href='/login' class='btn btn-large white black-text text-lighten-2'>Sign in</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class='container container-medium container-padded-bottom home'>
+    <div class='section'>
+      <div class='row'>
+        <div class='col m12 l4 center story'>
+          <i class='mdi-file-cloud-done'></i>
+          <h6>Share your best photo.</h6>
+          <p>Each photo in the competition will receive an equal number of initial views.</p>
+          <a href='/upload' class='btn btn-large cyan'>Upload</a>
+        </div>
+
+        <div class='col m12 l4 center story'>
+          <i class='mdi-action-thumb-up'></i>
+          <h6>Vote on anonymous entries.</h6>
+          <p>The most popular photos will stay day after day. Anonymity ensures votes are about quality.</p>
+          <a href='/popular' class='btn btn-large cyan'>Browse Popular</a>
+        </div>
+
+        <div class='col m12 l4 center story'>
+          <i class='mdi-action-perm-media'></i>
+          <h6>Explore and be inspired.</h6>
+          <!-- <p>The top photos will be preserved as the best of the week.</p> -->
+          <p>All the photos from each week will be preserved in the order they were ranked.</p>
+          <a href='/best_of' class='btn btn-large cyan'>Get Inspired</a>
+        </div>
+      </div>
+    </div>
+    
+    <a class="modal-trigger hidden" href="#modal">Rails Rumble info</a>
+  </div>
+
+  
+
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <h3>Welcome to Rate Pixels!</h3>
+      <br />
+
+      <p>The following has been made to help Rails Rumble guests:</p>
+
+      <ul>
+        <li>Guest sign in from the <a class='login-link' href='/signup'>sign up page</a>.</li>
+        <li>Populated the site with stock photography courtesy of unsplash.com.</li>
+      </ul>
+
+      <p>Rate Pixels was built with <a href='http://voltframework.com/' target='_blank'>Volt</a>, a rack based framework for building data rich web applications shockingly fast.</p>
+
+      <p>Enjoy!</p>
+
+      <button e-click="random_login" class='btn cyan'>Log Me in as a guest</button>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-action modal-close waves-effect btn-flat">Close</a>
+    </div>
+  </div>

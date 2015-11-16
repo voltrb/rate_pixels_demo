@@ -1,0 +1,62 @@
+<:Title>
+  Your Account
+
+<:Body>
+  <div class='container container-medium container-padded settings'>
+    <div class='row'>
+      <div class='col m5 center'>
+        <div class='avatar-wrapper'>
+          {{ if profile_pic_url.present? }}
+            <div class='avatar avatar-md' style='{{ if avatar_user }}background-image: url("/images/200/200/resize/{{ avatar_user.profile_pic_url }}"){{ end }}'></div>
+          {{ else }}
+            <div class='avatar avatar-md center'>
+              <i class='mdi-social-person'></i>
+            </div>
+          {{ end }}
+          <br />
+          <a class='change-avatar btn cyan center'>Change Avatar</a>
+          {{ if avatar_user }}
+            <:s3-uploader value="{{ avatar_user.profile_pic }}" />
+          {{ end }}
+          <h5 class='truncate'>{{ name }}</h5>
+        </div>
+      </div>
+
+      <div class="col m7">
+        <div class="row">
+          <div class="col s6">
+            <div class='tab'>
+              <a class="{{ if basic? }}active{{ end }}" e-click="set_basic">Basic Info</a>
+            </div>
+          </div>
+          
+          <div class="col s6">
+            <div class='tab'>
+              <a class="{{ if password? }}active{{ end }}" e-click="set_password">Password</a>
+            </div>
+          </div>
+          
+          {{ if basic? }}
+          <div class="col s12">
+            <form e-submit="save">
+              <:fields:text value="{{ name }}" />
+              <:fields:text value="{{ location }}" />
+              <:fields:textarea value="{{ bio }}" />
+              <button class="btn btn-block cyan">Save</button>
+            </form>
+          </div>
+          {{ end }}
+
+          {{ if password? }}
+          <div class="col s12">
+            <legend>Update Password</legend>
+            <form e-submit="save">
+              <:fields:text type="password" value="{{ password }}" />
+              <button class="btn btn-info btn-block cyan">Save</button>
+            </form>
+          </div>
+          {{ end }}
+        </div>
+      </div>
+    </div>
+  </div>

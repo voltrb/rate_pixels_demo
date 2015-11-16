@@ -1,0 +1,24 @@
+<:Title>
+  Reset Password
+
+<:Body>
+  <div class='container container-small container-padded'>
+    <h2 class='center-align'>Reset Your Password</h2>
+    <br />
+    
+    <form e-submit="reset_password">
+      {{ if errors.present? }}
+        <div class="alert alert-danger">{{ errors }}</div>
+      {{ end }}
+
+      <div class="row">
+        <div class="input-field col s12">
+          <:fields:text type="password" label="false" value="{{ user.password }}" />
+          <label>New Password</label>
+        </div>
+      </div>
+
+      <button class="btn btn-large btn-block cyan">Reset Password</button>
+    </form>
+  </div>
+

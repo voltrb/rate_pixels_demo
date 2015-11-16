@@ -1,0 +1,11 @@
+<:Title>
+  Best of Week {{ params._week}}
+
+<:Body>
+  <div class='container container-padded-bottom'>
+    <h1>Best of Week {{ params._week}}</h1>
+
+    <:grid model="{{ best_of_week_photos }}" />
+
+    <:pagination total="{{ total }}" per_page="{{ per_page }}" />
+  </div>

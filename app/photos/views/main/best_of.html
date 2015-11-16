@@ -1,0 +1,15 @@
+<:Title>
+  Best of
+
+<:Body>
+  <div class='container container-small container-padded'>
+    {{ best_of.each do |week| }}
+      <div class='week'>
+        <a href="/best_of/{{ week.number }}">
+          <h6>Week {{ week.number }}</h6>
+          <p class='small'>{{ week.entry_count }} entries</p>
+          <img src="{{ Photo.for_size(week.top_photo_url, 800, 800) }}" />
+        </a>
+      </div>
+    {{ end }}
+  </div>

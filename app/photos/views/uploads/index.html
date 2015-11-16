@@ -1,0 +1,18 @@
+<:Title>
+  Upload a Photo
+
+<:Body>
+  <div class='container container-small container-padded center upload'>
+    {{ if already_uploaded }}
+      <p>You already uploaded a photo this week.</p>
+    {{ else }}
+      <h1>Upload</h1>
+
+      <p>You can only submit one photo per week so make it your best. Good luck!</p>
+      <br />
+
+      <a id='upload-btn' class='btn cyan btn-large'><i class='icon mdi-action-backup'></i> Upload</a>
+
+      <:s3-uploader value="{{ file }}" />
+    {{ end }}
+  </div>

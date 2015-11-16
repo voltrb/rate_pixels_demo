@@ -1,0 +1,9 @@
+<:Title>
+  Popular
+
+<:Body>
+  <div class='container container-padded-bottom'>
+    <:grid model="{{ popular }}" />
+    <:pagination total="{{ total }}" per_page="{{ Volt.config.public.per_page }}" />
+    {{total}}
+  </div>

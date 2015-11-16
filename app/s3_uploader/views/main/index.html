@@ -1,0 +1,19 @@
+<div class="form-group">
+  {{ if attrs.label.present? }}
+    <label class="control-label">{{ attrs.label }}</label>
+  {{ end }}
+  <input type="file" id="files" e-change="upload" name="files" />
+  {{ if progress.present? }}
+    <div class="progress">
+      <div class="determinate cyan" role="progressbar" aria-valuenow="{{ progress }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ progress }}%;">
+        {{ if progress > 0 }}
+          {{ progress }}% Uploaded
+        {{ end }}
+      </div>
+    </div>
+  {{ end }}
+  {{ if error_message.present? }}
+    <span class="control-label errors">{{ error_message }}</span>
+  {{ end }}
+</div>
+

@@ -1,0 +1,88 @@
+{{ if voted_on }}
+  <div class='white'>
+    <a href="/profile/{{ user.id }}">
+      <div class='section'>
+        {{ if user.profile_pic_url.then(&:present?) }}
+          <div class='avatar avatar-sm' style='background-image: url("/images/50/50/resize/{{ user.profile_pic_url }}")'></div>
+        {{ else }}
+          <div class='avatar avatar-sm center'>
+            <i class='mdi-social-person'></i>
+          </div>
+        {{ end }}
+
+        <div class='name truncate'>
+          {{ user.name }}
+        </div>
+      </div>
+    </a>
+
+    <div class='section'>
+      <div class='cyan-text'>
+        <i class='mdi-action-thumb-up'></i> &nbsp;{{ up_vote_count }}
+      </div>
+
+      <div class='red-text lighten-1'>
+        <i class='mdi-action-thumb-down rotate-180'></i> &nbsp;{{ down_vote_count }}
+      </div>
+
+      <div>Views: {{ view_count }}</div>
+    </div>
+
+    <div class='section'>
+      <h6>{{ title }}</h6>
+
+      <p class='small'>Uploaded {{ created_at.time_distance_in_words }}.</p>
+
+      {{ if description.present? }}
+        <p>{{ description }}</p>
+      {{ end }}
+
+      {{ if tag_list.present? }}
+        {{ tag_list.each do |tag| }}
+          <a href='/search?query={{tag.strip}}'>
+            <div class='chip'>
+              {{ tag.strip.capitalize }}
+            </div>
+          </a>
+        {{ end }}
+      {{ end }}
+
+      <:exif model="{{ photo_info }}" />
+    </div>
+
+    <div class='section'>
+      <h6>Location</h6>
+
+      <div class='location-cover'>
+        <div class='location'>
+          <:google_maps center="{{ center }}" markers="{{ marker }}" zoom="5" />
+          <div class='location-cover'></div>
+        </div>
+      </div>
+    </div>
+
+    {{ if user_id == Volt.current_user_id  }}
+      <div class='section'>
+        <button e-click="destroy" class='btn cyan'>DELETE PHOTO</button>
+      </div>
+    {{ end }}
+
+    <div class='section'>
+      <:comments model="{{ model }}" />
+    </div>
+  </div>
+{{ else }}
+  <div class="votes center">
+    <div class='vote vote-up'>
+      <a e-click="vote('up')" class='waves-effect btn btn-large cyan-text'>
+        <i class='mdi-action-thumb-up'></i>
+      </a>
+    </div>
+
+    <div class='vote vote-down'>
+      <a e-click="vote('down')" class='waves-effect btn btn-large red-text text-lighten-1'>
+        <i class='mdi-action-thumb-down'></i>
+      </a>
+    </div>
+  </div>
+{{ end }}

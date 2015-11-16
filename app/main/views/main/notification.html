@@ -1,0 +1,4 @@
+  <div class="notification">
+    {{ user.name }} {{ action }} <a href="/profile/{{ to_user_id }}?photo_id={{ _photo_id }}">{{ photo.title }}</a>.
+    <div class="when-posted">{{ created_at.time_distance_in_words }}</div>
+  </div>

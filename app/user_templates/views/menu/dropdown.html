@@ -1,0 +1,24 @@
+<li class="dropdown">
+  <a href="#" class="dropdown-button" data-activates='user-dropdown'>
+    {{ if Volt.current_user.profile_pic_url.then(&:present?) }}
+      <div class='avatar avatar-sm' style='background-image: url("/images/200/200/resize/{{ Volt.current_user.profile_pic_url }}")'></div>
+    {{ else }}
+      <div class='avatar avatar-sm center'>
+        <i class='mdi-social-person'></i>
+      </div>
+    {{ end }}
+    <div class='dropdown-name truncate'>
+      {{ show_name }}
+    </div>
+  </a>
+  <ul id='user-dropdown' class="dropdown-content" role="menu" e-click="hide_dropdown">
+    <li>
+      <a href="/profile/{{ Volt.current_user_id }}">Profile</a>
+    </li>
+    <li>
+      <a href="/account">Account Settings</a>
+    </li>
+    <li class="divider"></li>
+    <li><a e-click="Volt.logout">Sign out</a></li>
+  </ul>
+</li>

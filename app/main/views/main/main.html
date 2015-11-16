@@ -1,0 +1,57 @@
+<:Title>
+  {{ view main_path, "title", {controller_group: 'main'} }}
+
+<:Body>
+  <div class="navbar-fixed">
+    <nav class="header white">
+      <div clsas="nav-wrapper">
+        <ul>
+          <li class='menu'>
+            <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+          </li>
+          <li class="logo waves-effect">
+            <a href="/" class="">RATE <span>PIXELS</span></a>
+          </li>
+        </ul>
+        <ul class='hide-on-med-and-down'>
+          <:nav href="/popular">Popular</:nav>
+          <:nav href="/best_of">Best of</:nav>
+          <li class='search-wrapper'>
+            <form e-submit="run_search">
+              <div class='search'>
+                <input type='search' placeholder='Search' value="{{ query }}" />
+                <i class='icon mdi-action-search'></i>
+              </div>
+            </form>
+          </li>
+        </ul>
+
+        <ul class='right'>
+          <:user_templates:menu />
+        </ul>
+        
+        <ul class="right hide-on-med-and-down">
+          <:nav href="/upload"><i class='icon mdi-action-backup'></i> &nbsp;Upload</:nav>
+        </ul>
+      </div>
+    </nav>
+  </div>
+  
+  <ul class="side-nav collection" id="mobile-demo">
+    <li class='collection-item'><a href="/popular">Popular</a></li>
+    <li class='collection-item'><a href="/best_of">Best of</a></li>
+    <li class='collection-item'><a href="/upload">Upload</a></li>
+  </ul>
+  
+  <:header />
+
+  <:volt:notices />
+
+  {{ view main_path, 'body', {controller_group: 'main'} }}
+
+<:Nav>
+  <li class="waves-effect {{ if active_tab? }}active{{ end }}">
+    <a href="{{ attrs.href }}">{{ yield }}</a>
+  </li>
+
+<:Header>

@@ -1,0 +1,14 @@
+<:Body>
+  <div class="row">
+    <div class="input-field col s12">
+      <input type="{{ @type }}" value="{{ attrs.value }}" e-focusout="blur" class="form-control" placeholder="{{ attrs.placeholder }}" />
+      {{ if label.present? }}
+        <label class="{{ if attrs.value && attrs.value != '' }}active{{ end }}">{{ label }}</label>
+      {{ end }}
+      {{ if errors }}
+        <span class="control-label errors">{{ (errors || []).join(', ') }}</span>
+      {{ elsif marked }}
+        <span class="glyphicon glyphicon-ok form-control-feedback"></span>
+      {{ end }}
+    </div>
+  </div>

@@ -1,0 +1,32 @@
+<:Title>
+  Signup
+
+<:Body>
+  <div class='container container-small container-padded'>
+    <h2 class='center-align'>Sign up</h2>
+    <br />
+
+    <form e-submit="signup">
+      {{ if use_username? }}
+        <:fields:text value="{{ _username }}" />
+      {{ else }}
+        <:fields:text value="{{ _email }}" />
+      {{ end}}
+      <:fields:text type="password" value="{{ _password }}" />
+
+      <:fields:text value="{{ _name }}" label="Full Name" />
+
+      <br />
+      <button class="btn btn-block cyan">Signup</button>
+
+      <br />
+      <div class='center'>
+        Already have an account? <a href="/login">Login here</a>
+      </div>
+    </form>
+    
+    <br /><br />
+    <div class='center'>
+      <button e-click="random_login" class='btn cyan'>Log Me in as a guest</button>
+    </div>
+  </div>

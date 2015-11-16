@@ -1,0 +1,20 @@
+<:Title>
+  Forgot your Password
+
+<:Body>
+  <div class='container container-small container-padded'>
+    <h2 class='center-align'>Forgot your password?</h2>
+    <p class='center-align>We'll e-mail you a reset link.</p>
+    <br />
+
+    <form e-submit="send_reset_email">
+      <div class="row">
+        <div class="input-field col s12">
+          <input type="text" value="{{ reset_email }}" autofocus />
+          <label>Email</label>
+        </div>
+      </div>
+
+      <button class="btn btn-large btn-block cyan">Reset Password</button>
+    </form>
+  </div>

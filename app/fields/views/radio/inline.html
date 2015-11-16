@@ -1,0 +1,21 @@
+<:Body>
+  <div class="{{ if errors }}has-error{{ elsif marked }}has-success{{ end }} has-feedback">
+    {{ options.each do |option| }}
+      <div class="radio-inline">
+        <label>
+          {{ if selected?(option) }}
+            <input type="radio" e-click="set(option)" name="{{ name }}" value="{{ option[:value] }}" checked/>
+          {{ else }}
+            <input type="radio" e-click="set(option)" name="{{ name }}" value="{{ option[:value] }}"/>
+          {{ end }}
+          {{ option[:label] }}
+        </label>
+        {{ if errors }}
+          <span class="glyphicon glyphicon-remove"></span>
+          <span class="control-label errors">{{ (errors || []).join(', ') }}</span>
+        {{ elsif marked }}
+          <span class="glyphicon glyphicon-ok"></span>
+        {{ end }}
+      </div>
+    {{ end }}
+  </div>

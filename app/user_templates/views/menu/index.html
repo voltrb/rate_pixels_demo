@@ -1,0 +1,17 @@
+<:Body>
+
+  {{ if Volt.current_user }}
+    <:dropdown />
+  {{ else }}
+    <li class="with-btn {{ if is_active? }}active{{ end }}">
+      <a href="/signup" class="btn btn-flat cyan white-text">
+        Sign up
+      </a>
+    </li>
+  
+    <li class="{{ if is_active? }}active{{ end }}">
+      <a href="/login">
+        Sign in
+      </a>
+    </li>
+  {{ end }}

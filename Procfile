@@ -1,0 +1,1 @@
+web: VOLT_ENV=production bundle exec volt server -p $PORT

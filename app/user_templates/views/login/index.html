@@ -1,0 +1,44 @@
+<:Title>
+  Login
+
+<:Body>
+  <div class='container container-small container-padded'>
+    <h2 class='center-align'>Sign in</h2>
+    <br />
+
+    <form e-submit="do_login">
+      {{ if errors.present? }}
+        <div class="alert alert-danger">{{ errors }}</div>
+      {{ end }}
+
+      <div class="row">
+        <div class="input-field col s12">
+          <input type="text" value="{{ login }}" autofocus />
+          <label>
+            {{ if use_username? }}
+              Username
+            {{ else }}
+              Email
+            {{ end }}
+          </label>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="input-field col s12">
+          <label class="control-label">Password </label>
+          <input class="form-control" type="password" value="{{ password }}">
+        </div>
+      </div>
+      
+      <br />
+
+      <button class="btn btn-large btn-block cyan">Login</button>
+    </form>
+    <br />
+    
+    <div class='center'>
+      <a href="/signup">Signup</a> | <a href="{{ forgot_url }}">Password</a>
+    </div>
+  </div>
+

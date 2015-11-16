@@ -1,0 +1,68 @@
+<div class="photo-grid">
+<div></div>
+  {{ scaled_photos.each do |photo| }}
+    <div
+      class="photo-in-grid"
+      style="width: {{ photo.width }}px;height: {{ photo.height }}px;"
+      e-click="zoom(photo, event)"
+    >
+      <div class='photo-wrapper'>
+        <img class="photo" src="{{ photo.photo.file_url_at_least(photo.width, photo.height) }}" />
+        <div class="info">
+          <i class='icon mdi-communication-call-made'></i>
+          {{ if photo.photo.voted_on }}
+            <div class="votes completed center center-align">
+              {{ if photo.photo.voted_up }}
+                <div class='vote vote-up'>
+                  <a class='btn btn-large disabled'>
+                    <i class='mdi-action-thumb-up'></i>
+                  </a>
+                </div>
+              {{ end }}
+
+              {{ if photo.photo.voted_down }}
+                <div class='vote vote-down'>
+                  <a class='btn btn-large disabled'>
+                    <i class='mdi-action-thumb-down'></i>
+                  </a>
+                </div>
+              {{ end }}
+
+              <div class='views center up'>
+                <span class='white-text'>
+                  <i class='icon mdi-action-thumb-up'></i> {{ photo.photo.up_vote_count }}
+                </span>
+              </div>
+
+              <div class='views center down'>
+                <span class='white-text'>
+                  <i class='icon mdi-action-thumb-down rotate-180'></i> {{ photo.photo.down_vote_count }}
+                </span>
+              </div>
+            </div>
+          {{ else }}
+            <div class="votes center">
+              <div class='vote vote-up'>
+                <a e-click="vote(photo.photo.id, 'up', event)" class='waves-effect btn btn-large cyan-text'>
+                  <i class='mdi-action-thumb-up'></i>
+                </a>
+              </div>
+
+              <div class='vote vote-down'>
+                <a e-click="vote(photo.photo.id, 'down', event)" class='waves-effect btn btn-large red-text text-lighten-1'>
+                  <i class='mdi-action-thumb-down'></i>
+                </a>
+              </div>
+            </div>
+          {{ end }}
+        </div>
+      </div>
+    </div>
+  {{ end }}
+</div>
+
+<br style="clear: both;" />
+
+{{ if current_photo }}
+  <:popover model="{{ selected_photo }}" />
+{{ end }}

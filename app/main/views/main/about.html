@@ -1,0 +1,11 @@
+<:Title>
+  About
+
+<:Body>
+  <h1>About</h1>
+
+  <p>About page...</p>
+
+  {{ store.notifications.all.each do |notification| }}
+    <:notification model="{{ notification }}" />
+  {{ end }}

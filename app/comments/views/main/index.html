@@ -1,0 +1,14 @@
+{{ model.comments.each do |comment| }}
+  <div class='comment'>
+    {{ if comment.user.then(&:profile_pic?) }}
+      <div class='avatar avatar-sm' style='background-image: url("{{ comment.user.cdn_profile_url(50, 50) }}")'>
+    {{ else }}
+      <div class='avatar avatar-sm center'>
+        <i class='mdi-social-person'></i>
+      </div>
+    {{ end }}
+    <p><strong>{{ comment.user.name }}</strong> {{ comment.message }}</p>
+  </div>
+{{ end }}
+
+<:new photo="{{ model }}" />

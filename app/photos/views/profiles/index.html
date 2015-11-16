@@ -1,0 +1,39 @@
+<:Title>
+  {{ name }}'s Profile
+
+<:Body>
+  <div class='container container-padded-bottom profile'>
+    <div class='profile-info'>
+      {{ if profile_pic_url.present? }}
+        <div class='avatar avatar-md' style='background-image: url("/images/200/200/resize/{{ profile_pic_url }}")'></div>
+      {{ else }}
+        <div class='avatar avatar-md center'>
+          <i class='mdi-social-person'></i>
+        </div>
+      {{ end }}
+      <h6 class='truncate'>{{ name }}</h6>
+
+      {{ if location.present? }}
+        <p class='small'>{{ location }}</p>
+      {{ end }}
+      {{ if bio.present? }}
+        <p class='bio'>{{ bio }}</p>
+      {{ end }}
+
+
+    </div>
+
+    <div class='profile-grid'>
+      {{ if has_user_photos }}
+        <:grid model="{{ user_photos }}" />
+      {{ else }}
+        <div class='center'>
+          <br />
+          <br />
+          <br />
+          <h6>It looks like you haven't uploaded any photos yet.</h6>
+          <a href='/upload'>Upload one here.</a>
+        </div>
+      {{ end }}
+    </div>
+  </div>

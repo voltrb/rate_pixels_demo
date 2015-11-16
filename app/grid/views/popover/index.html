@@ -1,0 +1,20 @@
+<:Title>
+  {{ photo.title }}
+
+<:Body>
+  <div class="photo-big">
+    <a e-click="close_zoom" class='close'><i class='mdi-navigation-close'></i></a>
+    <div class="photo-container">
+      <div class="photo-shower" e-click="next_photo(event)">
+        {{ if preview_url }}
+          <div class="preview-photo" style="background-image: url({{ preview_url }})">
+          </div>
+        {{ end }}
+        <div class="big-photo" style="background-image: url({{ photo_url }})">
+        </div>
+      </div>
+    </div>
+    <div class="photo-info">
+      <:info model="{{ photo }}" />
+    </div>
+  </div>
