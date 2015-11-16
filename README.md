@@ -1,3 +1,5 @@
+# Volt app build for Rails Rumble, built with caution thrown to the wind
+
 # Seeder
 be volt runner app/photos/lib/seeder.rb
 
