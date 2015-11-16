@@ -27,19 +27,3 @@ db.drop_table(*db.tables)
 redirect to login when voting and not logged in
 when you vote it doesn’t update right
 loggging in should redirect to popular
-
-# TOFIX
-- indexes aren't migrating?
-- some volt issue with grid loading <:popover model="{{ something }}" />
-  ^ I think maybe has to do with something being a promise already?
-- needing to check count in view task
-- stopped events (or prevent_default?) need to stop bubbling in volt also
-- google maps not seeing Volt.config in a runner (causing load crash)
-
-
-db = Volt.current_app.database.raw_db
-
-db = Sequel.connect('postgres://poeerpgrwkggot:2NwtaGmXNuFY_j7w070qhCLbnc@ec2-107-21-221-107.compute-1.amazonaws.com:5432/dfhlc7vv943ha3', :max_connections => 1)
-db[:votes].delete
-
-.order(Sequel.lit('RANDOM()'))
